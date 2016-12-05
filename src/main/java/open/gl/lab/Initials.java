@@ -42,18 +42,21 @@ public class Initials implements GLEventListener {
         gl2.glClear(GL.GL_COLOR_BUFFER_BIT);
         gl2.glColor3f(0f, 0f, 0f);
 
-        drawLetter(getLetterAOuterCoordinates(), getLetterAOuterCodes());
-        drawLetter(getLetterAInnerCoordinates(), getLetterAInnerCodes());
-        drawLetter(getLetterROuterCoordinates(), getterROuterCodes());
-        drawLetter(getLetterRInnerCoordinates(), getterRInnerCodes());
-
+        drawLetter(getLetterACoordinates(), getLetterACodes());
+        //drawLetter(getLetterAInnerCoordinates(), getLetterAInnerCodes());
+        drawLetter(getLetterRCoordinates(), getterRCodes());
+        //drawLetter(getLetterRInnerCoordinates(), getterRInnerCodes());
     }
 
     private void drawLetter(final Coordinate[] coordinates, final int[] codes) {
         current = new Coordinate(coordinates[0].getX(), coordinates[0].getY());
 
         for (int code : codes) {
-            drawLine(coordinates[code]);
+            if (code < 0) {
+                moveCurrent(coordinates[Math.abs(code)]);
+            } else {
+                drawLine(coordinates[code]);
+            }
         }
     }
 
@@ -65,16 +68,18 @@ public class Initials implements GLEventListener {
             {
                 gl2.glVertex2f(current.getX(), current.getY());
                 gl2.glVertex2f(coordinate.getX(), coordinate.getY());
-                moveCurrent(coordinate.getX(), coordinate.getY());
+                System.out.println(String.format("Form: x-%s y-%s, To: x-%s y-%s", current.getX(), current.getY(), coordinate.getX(), coordinate.getY()));
+
+                moveCurrent(coordinate);
             }
             gl2.glEnd();
         }
         gl2.glPopMatrix();
     }
 
-    private void moveCurrent(final float x, final float y) {
-        current.setX(x);
-        current.setY(y);
+    private void moveCurrent(final Coordinate coordinate) {
+        current.setX(coordinate.getX());
+        current.setY(coordinate.getY());
     }
 
     @Override

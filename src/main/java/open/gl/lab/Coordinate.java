@@ -29,8 +29,8 @@ public class Coordinate {
         this.y = y;
     }
 
-    public static Coordinate[] getLetterAOuterCoordinates() {
-        final Coordinate[] coordinates = new Coordinate[8];
+    public static Coordinate[] getLetterACoordinates() {
+        final Coordinate[] coordinates = new Coordinate[12];
 
         coordinates[0] = new Coordinate(30, 30);
         coordinates[1] = new Coordinate(35, 50);
@@ -40,23 +40,16 @@ public class Coordinate {
         coordinates[5] = new Coordinate(40, 40);
         coordinates[6] = new Coordinate(35, 40);
         coordinates[7] = new Coordinate(32, 30);
+        coordinates[8] = new Coordinate(36, 42);
+        coordinates[9] = new Coordinate(37, 48);
+        coordinates[10] = new Coordinate(38, 48);
+        coordinates[11] = new Coordinate(39, 42);
 
         return coordinates;
     }
 
-    public static Coordinate[] getLetterAInnerCoordinates() {
-        final Coordinate[] coordinates = new Coordinate[4];
-
-        coordinates[0] = new Coordinate(36, 42);
-        coordinates[1] = new Coordinate(37, 48);
-        coordinates[2] = new Coordinate(38, 48);
-        coordinates[3] = new Coordinate(39, 42);
-
-        return coordinates;
-    }
-
-    public static int[] getLetterAOuterCodes() {
-        final int[] codes = new int[9];
+    public static int[] getLetterACodes() {
+        final int[] codes = new int[14];
 
         codes[0] = 0;
         codes[1] = 1;
@@ -67,24 +60,17 @@ public class Coordinate {
         codes[6] = 6;
         codes[7] = 7;
         codes[8] = 0;
+        codes[9] = -8;
+        codes[10] = 9;
+        codes[11] = 10;
+        codes[12] = 11;
+        codes[13] = 8;
 
         return codes;
     }
 
-    public static int[] getLetterAInnerCodes() {
-        final int[] codes = new int[5];
-
-        codes[0] = 0;
-        codes[1] = 1;
-        codes[2] = 2;
-        codes[3] = 3;
-        codes[4] = 0;
-
-        return codes;
-    }
-
-    public static Coordinate[] getLetterROuterCoordinates() {
-        final Coordinate[] coordinates = new Coordinate[6];
+    public static Coordinate[] getLetterRCoordinates() {
+        final Coordinate[] coordinates = new Coordinate[10];
 
         coordinates[0] = new Coordinate(50, 30);
         coordinates[1] = new Coordinate(50, 50);
@@ -92,12 +78,16 @@ public class Coordinate {
         coordinates[3] = new Coordinate(62, 41);
         coordinates[4] = new Coordinate(53, 41);
         coordinates[5] = new Coordinate(53, 30);
+        coordinates[6] = new Coordinate(52, 48);
+        coordinates[7] = new Coordinate(60, 48);
+        coordinates[8] = new Coordinate(60, 43);
+        coordinates[9] = new Coordinate(52, 43);
 
         return coordinates;
     }
 
-    public static int[] getterROuterCodes() {
-        final int[] codes = new int[7];
+    public static int[] getterRCodes() {
+        final int[] codes = new int[12];
 
         codes[0] = 0;
         codes[1] = 1;
@@ -106,33 +96,12 @@ public class Coordinate {
         codes[4] = 4;
         codes[5] = 5;
         codes[6] = 0;
-
-
-        return codes;
-    }
-
-    public static Coordinate[] getLetterRInnerCoordinates() {
-        final Coordinate[] coordinates = new Coordinate[4];
-
-        coordinates[0] = new Coordinate(52, 48);
-        coordinates[1] = new Coordinate(60, 48);
-        coordinates[2] = new Coordinate(60, 43);
-        coordinates[3] = new Coordinate(52, 43);
-
-        return coordinates;
-    }
-
-    public static int[] getterRInnerCodes() {
-        final int[] codes = new int[7];
-
-        codes[0] = 0;
-        codes[1] = 1;
-        codes[2] = 2;
-        codes[3] = 3;
-        codes[4] = 0;
+        codes[7] = -6;
+        codes[8] = 7;
+        codes[9] = 8;
+        codes[10] = 9;
+        codes[11] = 6;
 
         return codes;
     }
-
-
 }
