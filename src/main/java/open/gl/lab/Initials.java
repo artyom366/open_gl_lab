@@ -7,6 +7,9 @@ import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.glu.GLU;
 
+import java.nio.ByteBuffer;
+import java.nio.DoubleBuffer;
+
 import static com.jogamp.opengl.fixedfunc.GLMatrixFunc.GL_MODELVIEW;
 import static com.jogamp.opengl.fixedfunc.GLMatrixFunc.GL_PROJECTION;
 import static open.gl.lab.Coordinate.*;
@@ -42,39 +45,45 @@ public class Initials implements GLEventListener {
         gl2.glClear(GL.GL_COLOR_BUFFER_BIT);
         gl2.glColor3f(0f, 0f, 0f);
 
-        drawLetter(getLetterACoordinates(), getLetterACodes());
-        //drawLetter(getLetterAInnerCoordinates(), getLetterAInnerCodes());
-        drawLetter(getLetterRCoordinates(), getterRCodes());
-        //drawLetter(getLetterRInnerCoordinates(), getterRInnerCodes());
+        drawLetter(getLetterACoordinates(), getLetterACodes(), GL2.GL_CLIP_PLANE0, new double[]{0.7, -1.5, 20.0, 40});
+        drawLetter(getLetterRCoordinates(), getterRCodes(), GL2.GL_CLIP_PLANE0, new double[]{0.5, -1.5, 20.0, 40});
     }
 
-    private void drawLetter(final Coordinate[] coordinates, final int[] codes) {
+    private void drawLetter(final Coordinate[] coordinates, final int[] codes, final int clipPlane, final double[] clippingPlaneCoordinates) {
         current = new Coordinate(coordinates[0].getX(), coordinates[0].getY());
 
-        for (int code : codes) {
-            if (code < 0) {
-                moveCurrent(coordinates[Math.abs(code)]);
-            } else {
-                drawLine(coordinates[code]);
+        gl2.glPushMatrix();
+        {
+            gl2.glGetIntegerv(clipPlane, new int[]{1}, 0);
+            gl2.glClipPlane(clipPlane, clippingPlaneCoordinates, 0);
+            gl2.glEnable(clipPlane);
+
+            for (int code : codes) {
+                if (code < 0) {
+                    moveCurrent(coordinates[Math.abs(code)]);
+                } else {
+                    drawLine(coordinates[code]);
+                }
             }
+
+            gl2.glDisable(clipPlane);
         }
+        gl2.glPopMatrix();
+
+        gl2.glFlush();
     }
 
     private void drawLine(final Coordinate coordinate) {
 
-        gl2.glPushMatrix();
+        gl2.glBegin(GL.GL_LINES);
         {
-            gl2.glBegin(GL.GL_LINES);
-            {
-                gl2.glVertex2f(current.getX(), current.getY());
-                gl2.glVertex2f(coordinate.getX(), coordinate.getY());
-                System.out.println(String.format("Form: x-%s y-%s, To: x-%s y-%s", current.getX(), current.getY(), coordinate.getX(), coordinate.getY()));
+            gl2.glVertex2f(current.getX(), current.getY());
+            gl2.glVertex2f(coordinate.getX(), coordinate.getY());
+            System.out.println(String.format("Form: x-%s y-%s, To: x-%s y-%s", current.getX(), current.getY(), coordinate.getX(), coordinate.getY()));
 
-                moveCurrent(coordinate);
-            }
-            gl2.glEnd();
+            moveCurrent(coordinate);
         }
-        gl2.glPopMatrix();
+        gl2.glEnd();
     }
 
     private void moveCurrent(final Coordinate coordinate) {
