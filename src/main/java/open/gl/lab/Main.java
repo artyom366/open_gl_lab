@@ -3,6 +3,8 @@ package open.gl.lab;
 import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.awt.GLCanvas;
+import open.gl.lab.lab1.Initials;
+import open.gl.lab.lab2.Heart;
 
 import javax.swing.JFrame;
 
@@ -14,9 +16,10 @@ public class Main {
         GLCapabilities capabilities = new GLCapabilities(profile);
 
         final GLCanvas glcanvas = new GLCanvas(capabilities);
-        final Initials initials = new Initials();
+        //final Initials view = new Initials();
+        final Heart view = new Heart();
 
-        glcanvas.addGLEventListener(initials);
+        glcanvas.addGLEventListener(view);
         glcanvas.setSize(400, 400);
 
         final JFrame frame = new JFrame ("straight Line");

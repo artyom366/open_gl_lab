@@ -1,39 +1,23 @@
-package open.gl.lab;
+package open.gl.lab.lab1;
 
 
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
-import com.jogamp.opengl.GLEventListener;
-import com.jogamp.opengl.glu.GLU;
+import open.gl.lab.parent.AbstractListener;
+import open.gl.lab.stat.Coordinate;
 
-import java.nio.ByteBuffer;
-import java.nio.DoubleBuffer;
+import static open.gl.lab.stat.Coordinate.*;
 
-import static com.jogamp.opengl.fixedfunc.GLMatrixFunc.GL_MODELVIEW;
-import static com.jogamp.opengl.fixedfunc.GLMatrixFunc.GL_PROJECTION;
-import static open.gl.lab.Coordinate.*;
-
-public class Initials implements GLEventListener {
+public class Initials extends AbstractListener {
 
     private Coordinate current;
-    private GLU glu;
     private GL2 gl2;
 
     @Override
     public void init(final GLAutoDrawable glAutoDrawable) {
-
-        gl2 = glAutoDrawable.getGL().getGL2();
-        gl2.glMatrixMode(GL_PROJECTION);
-        gl2.glLoadIdentity();
-
-        glu = new GLU();
-        glu.gluOrtho2D(0f, 100f, 0f, 100f);
-
-        gl2.glMatrixMode(GL_MODELVIEW);
-        gl2.glLoadIdentity();
-        gl2.glClearColor(1f, 1f, 1f, 0f);
-        gl2.glDisable(GL.GL_DEPTH_TEST);
+        super.init(glAutoDrawable);
+        this.gl2 = getGl2();
     }
 
     @Override
@@ -93,5 +77,10 @@ public class Initials implements GLEventListener {
 
     @Override
     public void reshape(final GLAutoDrawable glAutoDrawable, final int i, final int i1, final int i2, final int i3) {
+    }
+
+    @Override
+    public GL2 getGl2() {
+        return super.getGl2();
     }
 }

@@ -1,4 +1,4 @@
-package open.gl.lab;
+package open.gl.lab.stat;
 
 public class Coordinate {
 
@@ -103,5 +103,13 @@ public class Coordinate {
         codes[11] = 6;
 
         return codes;
+    }
+
+    public static float[][] getRightHeartSide() {
+        return new float[][]{{0f, -4.0f, 0.0f}, {4.0f, 0.5f, 0.0f}, {2.0f, 1.5f, 0.0f}, {0f, -0.5f, 0.0f}};
+    }
+
+    public static float[][] getLeftHeartSide() {
+        return new float[][]{{0f, -4.0f, 0.0f}, {-4.0f, 0.5f, 0.0f}, {-2.0f, 1.5f, 0.0f}, {0f, -0.5f, 0.0f}};
     }
 }
