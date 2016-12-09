@@ -112,4 +112,16 @@ public class Coordinate {
     public static float[][] getLeftHeartSide() {
         return new float[][]{{0f, -4.0f, 0.0f}, {-4.0f, 0.5f, 0.0f}, {-2.0f, 1.5f, 0.0f}, {0f, -0.5f, 0.0f}};
     }
+
+    public static float[] getHeartPoints() {
+        return new float[]{0, 0, 0, 0, 1, 1, 1, 1};
+    }
+
+    public static float[] getRightHeartSideFlat() {
+        return new float[]{0f, -4.0f, 0.0f, 4.0f, 0.5f, 0.0f, 2.0f, 1.5f, 0.0f, 0f, -0.5f, 0.0f};
+    }
+
+    public static float[] getLeftHeartSideFlat() {
+        return new float[]{0f, -4.0f, 0.0f, -4.0f, 0.5f, 0.0f, -2.0f, 1.5f, 0.0f, 0f, -0.5f, 0.0f};
+    }
 }

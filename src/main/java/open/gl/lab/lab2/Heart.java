@@ -89,5 +89,5 @@ public class Heart extends AbstractListener {
     }
 
     @Override
-    public void reshape(final GLAutoDrawable glAutoDrawable, int x, int y, int w, int h) {}
+    public void reshape(final GLAutoDrawable glAutoDrawable, int i, int i1, int i2, int i3) {}
 }

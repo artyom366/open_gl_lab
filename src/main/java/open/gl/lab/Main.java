@@ -4,7 +4,9 @@ import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.awt.GLCanvas;
 import open.gl.lab.lab1.Initials;
+import open.gl.lab.lab2.BezierLetter;
 import open.gl.lab.lab2.Heart;
+import open.gl.lab.lab2.Nurbs;
 
 import javax.swing.JFrame;
 
@@ -17,7 +19,9 @@ public class Main {
 
         final GLCanvas glcanvas = new GLCanvas(capabilities);
         //final Initials view = new Initials();
-        final Heart view = new Heart();
+        //final Heart view = new Heart();
+        //final Nurbs view = new Nurbs();
+        final BezierLetter view = new BezierLetter();
 
         glcanvas.addGLEventListener(view);
         glcanvas.setSize(400, 400);

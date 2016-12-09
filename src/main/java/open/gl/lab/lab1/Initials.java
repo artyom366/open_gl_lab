@@ -4,20 +4,28 @@ package open.gl.lab.lab1;
 import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
+import com.jogamp.opengl.glu.GLU;
 import open.gl.lab.parent.AbstractListener;
 import open.gl.lab.stat.Coordinate;
 
+import static com.jogamp.opengl.fixedfunc.GLMatrixFunc.GL_PROJECTION;
 import static open.gl.lab.stat.Coordinate.*;
 
 public class Initials extends AbstractListener {
 
     private Coordinate current;
     private GL2 gl2;
+    private GLU glu;
 
     @Override
     public void init(final GLAutoDrawable glAutoDrawable) {
         super.init(glAutoDrawable);
         this.gl2 = getGl2();
+        this.glu = getGlu();
+
+        gl2.glMatrixMode(GL_PROJECTION);
+        gl2.glLoadIdentity();
+        glu.gluOrtho2D(0f, 100f, 0f, 100f);
     }
 
     @Override
@@ -77,10 +85,5 @@ public class Initials extends AbstractListener {
 
     @Override
     public void reshape(final GLAutoDrawable glAutoDrawable, final int i, final int i1, final int i2, final int i3) {
-    }
-
-    @Override
-    public GL2 getGl2() {
-        return super.getGl2();
     }
 }
